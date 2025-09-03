@@ -4,14 +4,11 @@ require_once '../controllers/AuthController.php';
 $title = "HOME";
 
 $data = [
-    'email'=>'jujudopix@gmail.com',
+    'email'=>'mateus@gmail.com',
     'password'=>'1234'
 ];
 
 AuthController::login($conn, $data);
-
-
- 
 
 ?>
 
