@@ -4,7 +4,7 @@ require_once '../controllers/AuthController.php';
 $title = "HOME";
 
 $data = [
-    'email'=>'mateus@gmail.com',
+    'email'=>'gustavo@gmail.com',
     'password'=>'1234'
 ];
 

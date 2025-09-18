@@ -1,0 +1,52 @@
+<?php
+require_once __DIR__ . "/../controllers/quartoController.php";
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+    $id =  $segments[2] ?? null;
+    
+    if(isset($id)){
+        quartoController::getById($conn, $id);
+    }else{
+        quartoController::getAll($conn);
+    }
+
+
+}elseif ($_SERVER['REQUEST_METHOD'] === "DELETE"){
+    $id =  $segments[2] ?? null;
+    
+    if(isset($id)){
+        quartoController::delete($conn, $id);
+    }else{
+        jsonResponse(['message'=>"ID necessario"], 400);
+    }
+
+
+}elseif ($_SERVER['REQUEST_METHOD'] === "POST"){  
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if(isset($data)){
+        quartoController::create($conn, $data);
+    }else{
+        jsonResponse(['message'=>"Atributos invalidos"], 400);
+    }
+    
+
+}elseif ($_SERVER['REQUEST_METHOD'] === "PUT"){  
+    $id = $data['id'];
+    $data = json_decode(file_get_contents('php://input'), true);
+    
+    if(isset($data)){
+        quartoController::update($conn, $id, $data);
+    }else{
+        jsonResponse(['message'=>"Atributos invalidos"], 400);
+    }
+
+    
+}
+else{
+    jsonResponse([
+    "status"=> "error",
+    "message"=> "metodo nao premitiodo"
+    ], 405);
+}
+?>

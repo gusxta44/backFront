@@ -13,7 +13,6 @@ const routes = {
 function getPath() {
     //obtem o hash, remove o # e tira os espaços
     const url = (location.pathname || "").replace("/MeuSite/", "/").trim();
-    console.log(url);
     //retorna url se começar com "/" se não, retorna "/home" como padrao
     return url && url.startsWith("/") ? url : "/home";
 }
@@ -26,4 +25,3 @@ function renderRoutes(){
 } 
 //renderização
 document.addEventListener('DOMContentLoaded', renderRoutes);
- 

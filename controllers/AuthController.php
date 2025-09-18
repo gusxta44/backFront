@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . "/../models/usermodel.php";
-require_once __DIR__ . "/../helpers/token_jwt.php";
+require_once __DIR__ . "/../models/UserModel.php";
 require_once "passwordController.php";
+require_once __DIR__ . "/../helpers/token_jwt.php";
 
 class AuthController{
     public static function login($conn, $data) {
@@ -15,10 +15,11 @@ class AuthController{
             ], 401);
         }
  
-        $user = usermodel::validarUser($conn, $data['email'], $data['password']);
+        $user = UserModel::UserValidation($conn, $data['email'], $data['password']);
+
         if ($user) {
             $token = createToken($user);
-            return jsonResponse([ "token" => $token]);
+            return jsonResponse([ "token" => $token ]);
         } else {
             return jsonResponse([
                 "status" => "erro",
@@ -27,4 +28,3 @@ class AuthController{
         }
     }
 }
- 

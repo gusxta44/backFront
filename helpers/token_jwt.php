@@ -24,7 +24,6 @@ function validateToken($token){
 
     }catch(Exception $error){
         return 'false';
-
     }
 
 }

@@ -4,9 +4,7 @@ export default function Form() {
   divRoot.innerHTML = '';
 
   const container = document.createElement('div');
-  container.className = 'card p-4 shadow-lg';
-  container.style.width = '100%';
-  container.style.maxWidth =  '400px';
+  container.className = 'login-container';
   divRoot.appendChild(container);
 
   const titulo = document.createElement('h1');
@@ -19,7 +17,6 @@ export default function Form() {
   const email = document.createElement('input');
   email.type = 'email';
   email.placeholder = "Digite seu email";
-  email.className = ''
   formulario.appendChild(email);
 
   const senha = document.createElement('input');
@@ -36,9 +33,6 @@ export default function Form() {
   container.appendChild(titulo);
   container.appendChild(formulario);
   
-
-
-
   return container;
 } 
 

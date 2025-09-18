@@ -1,6 +1,6 @@
 import Form from"../components/Form.js";
 import Navbar from "../components/Navbar.js";
-
+import Footer from "../components/Footer.js";
 
 export default function renderCadastroPage() {
 
@@ -33,5 +33,10 @@ export default function renderCadastroPage() {
     const btnRegister = formulario.querySelector('button');
     btnRegister.textContent = "Cadastre-se";
 
+    const rodape = document.getElementById('footer');
+    rodape.innerHTML = "";
+
+    const Ft = Footer();
+    rodape.appendChild(Ft);
     
 } 
