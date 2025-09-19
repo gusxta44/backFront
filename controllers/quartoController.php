@@ -11,7 +11,6 @@ class quartoController{
             'qnt_cama_solteiro' => "qnt_cama_solteiro"
         ];
         $camposFaltantes = [];
-
         foreach ($camposObrigatorios as $campo => $nomeExibicao) {
             if (!isset($data[$campo])) {
                 $camposFaltantes[] = $nomeExibicao;
@@ -25,7 +24,7 @@ class quartoController{
             }
             return jsonResponse(['message' => $mensagem], 400); 
         }
-        
+
         $result = quartoModel::create($conn, $data);
         if($result){
             return jsonResponse(['message'=> 'Quarto criado com sucesso!'], 201);

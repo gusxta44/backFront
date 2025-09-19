@@ -1,24 +1,35 @@
 export default function DateSelector() {
-  const dataSelect = document.createElement('div');
-  dataSelect.classList.add('date-selector'); // só para estilizar 
+  const divDate = document.createElement('div');
+  divDate.className = 'dateSelector';
 
-  const inputEntrada = document.createElement('input');
-  inputEntrada.type = 'text';
-  inputEntrada.name = 'checkin';
-  inputEntrada.placeholder = 'Data de check-in';
+  const dateCheckIn = document.createElement('input');
+  dateCheckIn.type = 'date';
+  dateCheckIn.className = 'card p-3 shadow-lg inputDate';
 
-  const inputSaida = document.createElement('input');
-  inputSaida.type = 'text';
-  inputSaida.name = 'checkout';
-  inputSaida.placeholder = 'Data de check-out';
+  const dateCheckOut = document.createElement('input');
+  dateCheckOut.type = 'date';
+  dateCheckOut.className = 'card p-3 shadow-lg inputDate';
 
-  const btnPesquisar = document.createElement('button');
-  btnPesquisar.textContent = 'Pesquisar';
-  btnPesquisar.classList.add('btn-pesquisar');
+  const guestAmount = document.createElement('select');
+  guestAmount.className = 'inputDate card p-3 shadow-lg';
+  guestAmount.innerHTML = `
+    <option value="">Quantas Pessoas?</option>
+    <option value="1">1 pessoa</option>
+    <option value="2">2 pessoas</option>
+    <option value="3">3 pessoas</option>
+    <option value="4">4 pessoas</option>
+    <option value="5">5 ou mais pessoas</option>
+  `;
 
-  dataSelect.appendChild(inputEntrada);
-  dataSelect.appendChild(inputSaida);
-  dataSelect.appendChild(btnPesquisar);
+  const btnSearchRoom = document.createElement('button');
+  btnSearchRoom.type = 'submit';
+  btnSearchRoom.textContent = 'Pesquisar';
+  btnSearchRoom.className = 'btn'
 
-  return dataSelect;
+  divDate.appendChild(dateCheckIn);
+  divDate.appendChild(dateCheckOut);
+  divDate.appendChild(guestAmount);
+  divDate.appendChild(btnSearchRoom);
+
+  return divDate;
 }
