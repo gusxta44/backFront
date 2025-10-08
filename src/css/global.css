@@ -1,0 +1,134 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9fafb;
+}
+ 
+/*centralização sem interferência de footer/header*/
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+ 
+/*container do formulario*/
+.login-container {
+    background-color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    max-width: 400px;
+}
+ 
+/*titulo*/
+.titulo {
+    font-weight: 600;
+    font-size: 24px;
+    color: #2d2d2d;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+ 
+/*inputs */
+form {
+    display: flex;
+    gap: 10px;
+}
+ 
+input[type="email"],
+input[type="password"],
+input[type="text"]{
+    font-size: 15px;
+    padding: 0.75rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
+    background-color: #fff;
+}
+ 
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #27475d;
+    box-shadow: 0 0 5px rgba(126, 195, 132, 0.3);
+}
+/*botão */
+button.btn {
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    background-color: #27475d;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+ 
+button.btn:hover {
+    background-color: #ededee;
+}
+ 
+/*ink de cadastro */
+a {
+    font-size: 14px;
+    text-align: center;
+    color: #27475d;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: 0.3s;
+    display: block;
+}
+ 
+a:hover {
+    color: #27475d;
+    text-decoration: underline;
+}
+
+#root {
+    flex-direction: column;
+    gap: 5vh;
+    padding-bottom: 10vh;
+}
+ 
+/*Hero Section*/
+.hero-frame {
+    /*max-width: 900px;*/
+    overflow: hidden; /*impede que a imagem vaze do quadro*/
+    /*background: #f3f5f7; /*aplicar cor ao fundo quando a imagem nao ocupa todo espaço*/
+}
+ 
+.hero img, .hero {
+    height: 80vh;
+    /*aplica propriedade cover para que a imagem preencha o quadro (e nao distorce-la), definindo seu ponto de foco a partir da propriedade object-position*/
+    object-fit: cover;
+    object-position: top right; /*centraliza o recorte da imagem*/
+}
+ 
+@media (max-width: 576px){
+  .hero img {
+    height: 50vh;
+  }
+}
+
+.dateSelector {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 10px;               
+    flex-direction: row;     
+    width: 100%;             
+    padding: 10px;           
+    margin-bottom: 10px; 
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
