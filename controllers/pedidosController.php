@@ -12,8 +12,8 @@ class pedidosController{
     }
     
     public static function getAll($conn) {
-        $roomList = pedidosModel::getAll($conn);
-        return jsonResponse($roomList);
+        $pedido = pedidosModel::getAll($conn);
+        return jsonResponse($pedido);
     }
     public static function getById($conn, $id) {
         $result = pedidosModel::getById($conn, $id);

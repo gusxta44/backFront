@@ -2,6 +2,7 @@
 
 class ValidatorController{
 
+
     public static function validate_data($data, $labels){
         $pendets = [];
         foreach ($labels as $lbl){
@@ -11,7 +12,7 @@ class ValidatorController{
         }
         if(!empty($pendets) ){
             $pendets = implode(", ", $pendets);
-            jsonResponse(['message'=>"Erro, Falta o campo: ".$pendets], 400);
+            jsonResponse(['message'=>"Erro, falta o campo: ".$pendets], 400);
             exit;
         }
     }

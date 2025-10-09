@@ -103,7 +103,7 @@ a:hover {
  
 .hero img, .hero {
     height: 80vh;
-    /*aplica propriedade cover para que a imagem preencha o quadro (e nao distorce-la), definindo seu ponto de foco a partir da propriedade object-position*/
+    /*aplicaa propriedade cover para que a imagem preencha o quadro (e nao distorce-la), definindo seu ponto de foco a partir da propriedade object-position*/
     object-fit: cover;
     object-position: top right; /*centraliza o recorte da imagem*/
 }
