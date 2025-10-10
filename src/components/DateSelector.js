@@ -1,6 +1,9 @@
 export default function DateSelector() {
   const divDate = document.createElement('div');
-  divDate.className = 'dateSelector';
+  divDate.className = 'dateSelector'; 
+
+  const inputsData = document.createElement('div');
+  inputsData.className = 'input-group';
 
   const dateCheckIn = document.createElement('input');
   dateCheckIn.type = 'date';
@@ -24,16 +27,19 @@ export default function DateSelector() {
   const btnSearchRoom = document.createElement('button');
   btnSearchRoom.type = 'submit';
   btnSearchRoom.textContent = 'Pesquisar';
-  btnSearchRoom.className = 'btn'
+  btnSearchRoom.className = 'btn';
 
-  const modal = document.createElement('div');
-  modal.className = 'modalAviso';  
-  modal.style.display = 'none';
+  const msgdeErro = document.createElement('ul');
+  msgdeErro.className = 'mensagem-erro';
+  msgdeErro.style.display = 'none';
 
-  divDate.appendChild(dateCheckIn);
-  divDate.appendChild(dateCheckOut);
-  divDate.appendChild(guestAmount);
-  divDate.appendChild(btnSearchRoom);
+  inputsData.appendChild(dateCheckIn);
+  inputsData.appendChild(dateCheckOut);
+  inputsData.appendChild(guestAmount);
+  inputsData.appendChild(btnSearchRoom);
 
+  divDate.appendChild(inputsData);
+  divDate.appendChild(msgdeErro);
+  
   return divDate;
 }
