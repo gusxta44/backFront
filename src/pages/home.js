@@ -4,6 +4,7 @@ import Footer from "../components/Footer.js";
 import Hero from "../components/Hero.js";
 import Navbar from "../components/Navbar.js";
 import RoomCards from "../components/RoomCards.js";
+import CardLounge from "../components/CardLounge.js";
 
 export default function renderHomePage() {
   const nav = document.getElementById('navbar');
@@ -21,7 +22,47 @@ export default function renderHomePage() {
   const datesSelector = DateSelector();
   divRoot.appendChild(datesSelector);
 
+  const cardQuarto = document.createElement('div');
+  cardQuarto.className = "cards";
+  divRoot.appendChild(cardQuarto);
+
+  const loungeContainer = document.createElement('div');
+  loungeContainer.className = "cards lounge-cards";
+
+  const loungeTitle = document.createElement('h2');
+  loungeTitle.textContent = 'Conheça nosso hotel';
+  loungeTitle.className = 'text-center my-4'; 
+  divRoot.appendChild(loungeTitle);
+
+  const loungeItems = [
+    { path: "restaurante.jpg", title: "Restaurante", text: "Nosso restaurante é um espaço agradável e familiar!" },
+    { path: "Sauna.jpg", title: "SPA", text: "Nosso SPA é ideal para momentos de relaxamento!" },
+    { path: "infantil.jpg", title: "Área para crianças", text: "Temos o melhor espaço para crianças, curta enquanto suas crianças!" },
+    { path: "academia.jpg", title: "Academia", text: "Temos uma academia incrivel, com aparelhos de última geração" }
+  ];
+
+  loungeItems.forEach((item, i) => {
+    loungeContainer.appendChild(CardLounge(item, i));
+  });
+
+  divRoot.appendChild(loungeContainer);
+
   const [dateCheckIn, dateCheckOut] = datesSelector.querySelectorAll('input[type="date"]');
+
+  const hoje = new Date().toISOString().split('T')[0];
+  dateCheckIn.setAttribute('min', hoje);
+  dateCheckOut.setAttribute('min', dateCheckIn);
+
+  dateCheckIn.addEventListener('change', () => {
+    if (dateCheckIn.value) {
+    const dataCheckin = new Date(dateCheckIn.value);
+    dataCheckin.setDate(dataCheckin.getDate() + 1);
+
+    const novaMinCheckout = dataCheckin.toISOString().split('T')[0];
+    dateCheckOut.setAttribute('min', novaMinCheckout);
+  }
+  });
+
   const guestAmount = datesSelector.querySelector('select');
   const btnSearchRoom = datesSelector.querySelector('button'); 
   const msgdeErro = datesSelector.querySelector('.mensagem-erro');
@@ -32,6 +73,8 @@ export default function renderHomePage() {
     const inicio = (dateCheckIn?.value || "").trim();
     const fim = (dateCheckOut?.value || "").trim();
     const capacidade = parseInt(guestAmount?.value || "0", 10);
+    const hoje = new Date();
+    hoje.setHours(0,0,0,0); 
 
     const errors = [];
 
@@ -54,10 +97,10 @@ export default function renderHomePage() {
         guestAmount.classList.add('input-error');
     }
 
-    const dtInicio = new Date(inicio);
-    const dtFim = new Date(fim);
+    const dataInicio = new Date(inicio);
+    const dataFim = new Date(fim);
 
-    if (inicio && fim && (!isNaN(dtInicio) && !isNaN(dtFim)) && dtInicio >= dtFim) {
+    if (inicio && fim && (!isNaN(dataInicio) && !isNaN(dataFim)) && dataInicio >= dataFim) {
         errors.push("a data de check out deve ser posterior ao check in");
         dateCheckIn.classList.add('input-error');
         dateCheckOut.classList.add('input-error');
@@ -96,17 +139,6 @@ export default function renderHomePage() {
       console.log(error);
     }
   });
-
-  const cardQuarto = document.getElementById('roomcards');
-  cardQuarto.className = "cards";
-  cardQuarto.innerHTML = "";
-
-  for (let i = 0; i < 3; i++) {
-    const cardq = RoomCards(i);
-    cardQuarto.appendChild(cardq);
-  }
-
-  divRoot.appendChild(cardQuarto);
 
   const footer = document.getElementById('footer');
   footer.innerHTML = '';
