@@ -17,7 +17,6 @@ class reservasController{
         }
     }
 
-
     public static function procurarId($conn, $pedido_id) {
         $result = reservasModel::procurarId($conn, $pedido_id);
         return jsonResponse($result); 
@@ -26,6 +25,8 @@ class reservasController{
         $reservasList = reservasModel::getAll($conn);
         return jsonResponse($reservasList);
     }
+
+    
     
 }
 ?>
