@@ -4,8 +4,18 @@ require_once __DIR__ . "/../models/OrderModel.php";
 
 class OrderController{
 
-    public static function create($conn, $data){
-        return;
+    public static function create($conn, $data) {
+        $sql = "INSERT INTO pedidos (usuario_id, cliente_id, pagamento) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iis",
+            $data["usuario_id"],
+            $data["cliente_id"],
+            $data["pagamento"]
+        );
+        if($stmt->execute()){
+            return $conn->insert_id;
+        }
+        return false;
     }
 
     public static function createOrder($conn, $data){
@@ -13,7 +23,7 @@ class OrderController{
 
         ValidatorController::validate_data($data, ["cliente_id", "pagamento", "quartos"]);
 
-        foreach($data['quartos'] as $index => $quarto){
+        foreach($data['quartos'] as $quarto){
             ValidatorController::validate_data($quarto, ["id", "inicio", "fim"]);
             $quarto["inicio"] = ValidatorController::fix_dateHour($quarto["inicio"], 14);
             $quarto["fim"] = ValidatorController::fix_dateHour($quarto["fim"], 12);

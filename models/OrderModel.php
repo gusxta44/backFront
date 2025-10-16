@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . "/../models/quartoModel.php";
+require_once __DIR__ . "/../models/reservasModel.php";
 class OrderModel {
 
     public static function create($conn, $data){
@@ -42,7 +44,7 @@ class OrderModel {
                     continue;
                 }
 
-                if (!reservaModel::isQuartoDisponivel($conn, $id, $inicio, $fim)) {
+                if (!reservasModel::isQuartoDisponivel($conn, $id, $inicio, $fim)) {
                     $reservas[] = "Quarto {$id} indisponível no período de {$inicio} a {$fim}";
                     continue;
                 }
@@ -55,16 +57,15 @@ class OrderModel {
                     "fim" => $fim
                 ]);
 
-                if ($reserveResult) {
-                    $reservou = true;
-                    $reservas[] = [
-                        "reserva_id" => $conn->insert_id,
-                        "quarto_id" => $id
-                    ];
-                }
+                
+                $reservou = true;
+                $reservas[] = [
+                    "reserva_id" => $conn->insert_id,
+                    "quarto_id" => $id
+                ];
             }
 
-            if ($reservou) {
+            if ($reservou == true) {
                 $conn->commit();
                 return [
                     "pedido_id" => $order_id,
