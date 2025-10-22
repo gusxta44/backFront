@@ -11,6 +11,9 @@ class quartoModel {
             $data["preco"],
             $data["disponivel"]
         );
+        if ($stmt->execute()) {
+            return $conn->insert_id;
+        } 
         return $stmt->execute();
     }
 

@@ -25,9 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     }
 
 } elseif ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $data = json_decode(file_get_contents('php://input'), true);
+    $data = $_POST;
+    $data['fotos'] = $_FILES['fotos'] ?? null;
     quartoController::create($conn, $data);
-
+    
 } elseif ($_SERVER['REQUEST_METHOD'] === "PUT") {
     $data = json_decode(file_get_contents('php://input'), true);
     $id = $data['id'] ?? null;
