@@ -158,3 +158,72 @@ a:hover {
   border: 2px solid #dc3545 !important; 
   box-shadow: 0 0 5px #dc3545;
 }
+
+.room-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.room-form input[type="text"],
+.room-form input[type="number"],
+.room-form input[type="file"],
+.room-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.room-form input:focus,
+.room-form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.room-form label {
+  font-weight: 500;
+  color: #333;
+}
+
+.room-form .disponibilidade-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.room-form .opcoes-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.room-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.room-form button:hover {
+  background-color: #0056b3;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

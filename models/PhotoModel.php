@@ -1,23 +1,24 @@
 <?php
 
 class PhotoModel{
-
-    public static function getAll($conn) {
-        $sql = "SELECT nome, email, telefone, cpf, cargo_id FROM clientes";
+    
+    public static function getAll($conn){
+        $sql = "SELECT * FROM fotos";
         $result = $conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public static function getById($conn, $id) {
-        $sql = "SELECT * FROM imagens_quartos WHERE id= ?";
+    public static function getById($conn, $id){
+        $sql = "SELECT * FROM imagens WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
     public static function create($conn, $name) {
-        $sql = "INSERT INTO imagens_quartos (nome) VALUES (?)";
+        $sql = "INSERT INTO imagens (nome) VALUES (?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $name);
         if ($stmt->execute()) {
@@ -36,7 +37,6 @@ class PhotoModel{
         return false;
     }
 
-
     public static function getByRoomId($conn, $id){
         $sql = "SELECT f.nome FROM imagens_quartos qf 
         JOIN fotos f ON qf.foto_id = f.id 
@@ -53,18 +53,17 @@ class PhotoModel{
         return $photos;
     }
 
-    public static function delete($conn, $id) {
-        $sql = "DELETE FROM imagens_quartos WHERE id= ?";
+     public static function update($conn, $id, $name){
+        $sql = "UPDATE fotos SET nome = ? WHERE id=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("si", $name, $id);
         return $stmt->execute();
     }
 
-    public static function update($conn, $id) {
-        $sql = "UPDATE imagens_quartos SET nome = ? WHERE id = ?";
+    public static function delete($conn, $id){
+        $sql = "DELETE FROM imagens WHERE id=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s",
-        );
+        $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
 }

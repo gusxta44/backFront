@@ -36,7 +36,7 @@ class quartoController {
             if ($data['fotos']){
                 $pictures = UploadController::upload($data['fotos']);
                 foreach ($pictures['saves'] as $name) {
-                    $idPhoto = PhotoModel::create($conn, $name);
+                    $idPhoto = PhotoModel::create($conn, $name['name']);
                     if ($idPhoto) {
                         PhotoModel::createRelationRoom($conn, $result, $idPhoto);
                     }
@@ -88,9 +88,12 @@ class quartoController {
 
         $result = quartoModel::searchAvailable($conn, $data);
         if($result){
-            return jsonResponse(['quartos_disponiveis'=> $result]);
-        } else {
-            return jsonResponse(['message'=> 'Não há quartos disponíveis para esse período e capacidade'], 400);
+            foreach ($result as &$quarto) {
+                $quarto['fotos'] = PhotoModel::getByRoomId($conn, $quarto['id']);
+            }
+            return jsonResponse(['Quartos'=> $result]);
+        }else{
+            return jsonResponse(['message'=> 'não tem quartos disponiveis'], 400);
         }
     }
 }

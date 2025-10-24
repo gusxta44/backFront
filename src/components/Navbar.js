@@ -24,6 +24,7 @@ export default function Navbar(){
             Hotel Andrade
           </a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cadRoom">Cadastrar Quarto</a></li>
             <li><a class="dropdown-item" href="#">Normas</a></li>
             <li><a class="dropdown-item" href="#">Suporte</a></li>
             <li><hr class="dropdown-divider"></li>
