@@ -28,6 +28,5 @@ class reservasController{
     }
 
     
-    
 }
 ?>

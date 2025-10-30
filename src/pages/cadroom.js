@@ -1,7 +1,7 @@
 import Form from "../components/Form.js";
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
-import {createcadRoom} from "../api/roomsAPI.js";
+import {addRoom} from "../api/roomsAPI.js";
 
 export default function renderRoomPage() {
     const nav = document.getElementById('navbar');
@@ -91,8 +91,13 @@ export default function renderRoomPage() {
     
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        //ARRUMAR//
-
+        try { 
+            const response = await addRoom(form);
+            console.log("Resposta do servidor: ", response);
+        }
+        catch (error) {
+            console.log("Erro ao enviar requisição: " + error.message);
+        }
     });
 
     const divRoot = document.getElementById('root');

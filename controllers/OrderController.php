@@ -29,7 +29,7 @@ class OrderController{
             $quarto["fim"] = ValidatorController::fix_dateHour($quarto["fim"], 12);
 
         }    
-        if (count ($data["quartos"]) == 0){
+        if (count($data["quartos"]) == 0){
             return jsonResponse(['message'=> 'não existe reserva'], 400);
         }
 
@@ -37,8 +37,8 @@ class OrderController{
             $resultado = OrderModel::createOrder($conn, $data);
             return jsonResponse(['message'=> $resultado]);
 
-        }catch(RuntimeException $erro) {
-            return jsonResponse(['message' => 'erro ao criar reserva'], 500);
+        }catch(\Throwable $erro){
+            return jsonResponse(['message' => $erro->getMessage()], 500);
         }
 
     }

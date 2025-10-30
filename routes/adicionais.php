@@ -22,14 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
 
 }elseif ($_SERVER['REQUEST_METHOD'] === "POST"){  
+    validateTokenAPI("funcionario");
     $data = json_decode(file_get_contents('php://input'), true);
-    
-    if(isset($data)){
-        adicionaisController::create($conn, $data);
-    }else{
-        jsonResponse(['message'=>"Atributos invalidos"], 400);
-    }
-    
+    adicionaisController::create($conn, $data);
 
 }elseif ($_SERVER['REQUEST_METHOD'] === "PUT"){  
     $data = json_decode(file_get_contents('php://input'), true);
@@ -45,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 else{
     jsonResponse([
     "status"=> "error",
-    "message"=> "metodo nao premitiodo"
+    "message"=> "metodo nao premitido"
     ], 405);
 }
 ?>
