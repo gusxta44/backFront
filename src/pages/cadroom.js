@@ -40,14 +40,14 @@ export default function renderRoomPage() {
     inputCamaCasal.type = 'number';
     inputCamaCasal.placeholder = "Quantidade de camas de casal";
     inputCamaCasal.min = 0;
-    inputCamaCasal.name = "camaCasal";
+    inputCamaCasal.name = "qnt_cama_casal";
     form.insertBefore(inputCamaCasal, btn);
 
     const inputCamaSolteiro = document.createElement('input');
     inputCamaSolteiro.type = 'number';
     inputCamaSolteiro.placeholder = "Quantidade de camas de solteiro";
     inputCamaSolteiro.min = 0;
-    inputCamaSolteiro.name = "camaSolteiro";
+    inputCamaSolteiro.name = "qnt_cama_solteiro";
     form.insertBefore(inputCamaSolteiro, btn);
 
     const inputPreco = document.createElement('input');

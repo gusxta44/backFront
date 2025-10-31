@@ -37,7 +37,7 @@ export default function renderHomePage() {
   const loungeItems = [
     { path: "restaurante.jpg", title: "Restaurante", text: "Nosso restaurante é um espaço agradável e familiar!" },
     { path: "Sauna.jpg", title: "SPA", text: "Nosso SPA é ideal para momentos de relaxamento!" },
-    { path: "infantil.jpg", title: "Área para crianças", text: "Temos o melhor espaço para crianças, curta enquanto suas crianças!" },
+    { path: "infantil.jpg", title: "Área para crianças", text: "Temos o melhor espaço para crianças, curta enquanto suas crianças brincam!" },
     { path: "academia.jpg", title: "Academia", text: "Temos uma academia incrivel, com aparelhos de última geração" }
   ];
 

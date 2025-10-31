@@ -1,6 +1,9 @@
 <?php
 class quartoModel {
     public static function create($conn, $data) {
+        if (isset($data['disponivel'])) {
+        $data['disponivel'] = isset($data['disponivel']) && $data['disponivel'] === 'true' ? 1 : 0;
+    }
         $sql = "INSERT INTO quartos (nome, numero, qnt_cama_casal, qnt_cama_solteiro, preco, disponivel) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("siiidi",
@@ -11,10 +14,10 @@ class quartoModel {
             $data["preco"],
             $data["disponivel"]
         );
-        if ($stmt->execute()) {
+        if ($stmt->execute()){
             return $conn->insert_id;
-        } 
-        return $stmt->execute();
+        }
+        return false;
     }
 
     public static function getAll($conn) {

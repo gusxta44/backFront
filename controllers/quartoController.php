@@ -88,10 +88,10 @@ class quartoController {
 
         $result = quartoModel::searchAvailable($conn, $data);
         if($result){
-            foreach ($result as &$quarto) {
+            foreach ($result as $quarto) {
                 $quarto['fotos'] = PhotoModel::getByRoomId($conn, $quarto['id']);
             }
-            return jsonResponse(['Quartos'=> $result]);
+            return jsonResponse(['quartos_disponiveis'=> $result]);
         }else{
             return jsonResponse(['message'=> 'não tem quartos disponiveis'], 400);
         }

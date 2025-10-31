@@ -8,8 +8,8 @@ const routes = {
     "/login": renderLoginPage,
     "/cadastro": renderCadastroPage,
     "/home" : renderHomePage,
-    "/cart" : renderCartPage,
-    "/cadRoom" : renderRegisterRoom
+    "/cadRoom" : renderRegisterRoom,
+    "/cart" : renderCartPage
     //novas paginas aqui adicionadas confrome desenvolvidas
 };
  

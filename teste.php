@@ -41,8 +41,8 @@ require_once __DIR__ . "/controllers/clientesController.php";
 
 //echo passwordController::passwordVerificar($data,['password']);
 
-$senha = passwordController::generateHash('12345');
-echo $senha;
+//$senha = passwordController::generateHash('12345');
+//echo $senha;
 
 
 ?>

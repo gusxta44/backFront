@@ -38,14 +38,15 @@ class PhotoModel{
     }
 
     public static function getByRoomId($conn, $id){
-        $sql = "SELECT f.nome FROM imagens_quartos qf 
-        JOIN fotos f ON qf.foto_id = f.id 
+        $sql = "SELECT f.nome
+        FROM imagens_quartos qf
+        JOIN imagens f ON qf.imagem_id = f.id
         WHERE qf.quarto_id = ?";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $resiçt = $stmt->get_result();
+        $result = $stmt->get_result();
         $photos = [];
         while($row = $result->fetch_assoc()){
             $photos[] = $row['nome'];

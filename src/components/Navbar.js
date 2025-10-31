@@ -47,7 +47,7 @@ export default function Navbar(){
       </form> 
 
       <div>
-          <a href="carrinho"><img src="public/assets/images/cart-check-fill.svg"
+          <a href="cart"><img src="public/assets/images/cart-check-fill.svg"
           width="25" height="25" alt=""></a>
       </div>
     </div>
@@ -57,5 +57,4 @@ export default function Navbar(){
 return navbar;
 
 
- 
 }
